@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class Point : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public GameObject Inner;
+    private Vector2 _position;
+
+
+    public Vector2 pos => _position;
+    
+    public void Init(Vector2 position)
     {
-        
+        this._position = position;
+    }
+
+    private void OnMouseDown()
+    {
+        if (GameManager.Instance.GetGameState == GameManager.GameState.player1)
+        {
+            Inner.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else
+        {
+            Inner.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+
+        BoardManager.Instance.SetPoint(this);
     }
 
     // Update is called once per frame
