@@ -7,41 +7,63 @@ public class GameManager : MonoBehaviour
 
 
     public static GameManager Instance;
-    public int Width = 4;
-    public int Height = 4;
-    public Point PointPrefab;
+    private GameState _gameState;
 
 
-
-
+    public GameState GetGameState => _gameState;
     private void Awake()
     {
         Instance = this;
     }
 
-
-    private void GenerateBoard()
+    public enum GameState
     {
-        for (int i = 0; i < Height; i++)
-        {
-            for (int j = 0; j < Width; j++)
-            {
-                var p = new Vector2(i,j);
-                Instantiate(PointPrefab, p, Quaternion.identity);
-            }
-        }
+        start,
+        player1,
+        player2,
+        end
+
     }
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        GenerateBoard();
+        _gameState = GameState.start;
     }
 
-    // Update is called once per frame
+
+    public void UpdateGameState(GameState gameState)
+    {
+        _gameState = gameState;
+    }
+
+    public void SwitchPlayer()
+    {
+        if (_gameState == GameState.player1)
+        {
+            _gameState = GameState.player2;
+        }
+        else
+        {
+            _gameState = GameState.player1;
+        }
+    }
+ 
     void Update()
     {
-        
+        switch (_gameState)
+        {
+            case GameState.start:
+                break;
+            case GameState.player1:
+                break;
+            case GameState.player2:
+                break;
+            case GameState.end:
+                break;
+            default:
+                break;
+        }
     }
 }
