@@ -229,7 +229,7 @@ public class GameManager : MonoBehaviour
                     }
                     squareAnchors.Add(firstNode);
                     squareAnchors.Add(secondNode);
-                    Debug.Log("anchors num: " + squareAnchors.Count);
+                    
                     CheckForSquare(secondNode, firstNode, firstNode, 1);
                     squareAnchors.Remove(firstNode);
                     squareAnchors.Remove(secondNode);
@@ -308,11 +308,7 @@ public class GameManager : MonoBehaviour
     {
         if (steps > 3)
         {
-            Debug.Log("1", squareAnchors[0]);
-            Debug.Log("2", squareAnchors[1]);
-            Debug.Log("3", squareAnchors[2]);
-            Debug.Log("4", squareAnchors[3]);
-            Debug.Log("5", squareAnchors[4]);
+            
             int repeatCounter = 0;
             foreach (Node n in squareAnchors)
             {
@@ -326,11 +322,7 @@ public class GameManager : MonoBehaviour
             {
                 DrawSquare();
 
-                Debug.Log("1", squareAnchors[0]);
-                Debug.Log("2", squareAnchors[1]);
-                Debug.Log("3", squareAnchors[2]);
-                Debug.Log("4", squareAnchors[3]);
-                Debug.Log("5", squareAnchors[4]);
+                
             }
         }
         else
