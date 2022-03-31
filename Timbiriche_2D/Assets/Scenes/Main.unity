@@ -148,7 +148,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.0285306
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -200,8 +200,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.61, y: 1.61, z: -10}
+  m_LocalScale: {x: 0.39415404, y: 0.39415404, z: 0.39415404}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3548c459e730a8f4eacf9eb83eac3262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSizeX: 8
-  gridSizeY: 8
+  gridSizeX: 6
+  gridSizeY: 6
   gridParent: {fileID: 691139814}
   linesParent: {fileID: 1107836261}
   lineMaterial: {fileID: 2100000, guid: d7af84cbab1d7444da36df0034ad86dd, type: 2}
