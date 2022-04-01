@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,8 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private GameState _gameState;
     public GameState GetGameState => _gameState;
-    [SerializeField]private int gridSizeX;
-    [SerializeField]private int gridSizeY;
+    public int gridSizeX;
+    public int gridSizeY;
     [SerializeField]private GameObject gridParent;
     [SerializeField]private GameObject linesParent;
     [SerializeField]private Material lineMaterial;
@@ -17,6 +18,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]private Gradient player2Color;
     [SerializeField]private GameObject nodePrefab;
     [SerializeField]private Sprite squareSprite;
+
+
+    public Canvas canvas;
+    public Button button;
+    public Dropdown dropdown;
 
     private Node[,] grid;
     [SerializeField]private List<Node> squareAnchors = new List<Node>();
@@ -64,9 +70,28 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        GridSetup();
-        LineSetup();
-        _gameState = GameState.start;
+        button.onClick.AddListener(() =>
+        {
+            canvas.gameObject.SetActive(false);
+            int index = dropdown.value;
+            int n = int.Parse(dropdown.options[index].text);
+            Debug.Log(n);
+            gridSizeY = n;
+            gridSizeX = n;
+            GridSetup();
+            LineSetup();
+            _gameState = GameState.start;
+
+        }
+
+
+
+
+            );
+
+        
+
+
     }
 
     void Update()
@@ -90,6 +115,7 @@ public class GameManager : MonoBehaviour
         grid = new Node[gridSizeX, gridSizeY];
         Transform nodeAnchor = gridParent.transform.GetChild(0);
         GameObject currentNode;
+        
 
         for (int i = 0; i < gridSizeY; i++)
         {
@@ -102,7 +128,7 @@ public class GameManager : MonoBehaviour
                 grid[j, i] = currentNode.GetComponent<Node>();
             }
         }
-
+        
         NodeSetup();
     }
 
@@ -308,7 +334,11 @@ public class GameManager : MonoBehaviour
     {
         if (steps > 3)
         {
+<<<<<<< Updated upstream
             
+=======
+
+>>>>>>> Stashed changes
             int repeatCounter = 0;
             foreach (Node n in squareAnchors)
             {
@@ -321,8 +351,11 @@ public class GameManager : MonoBehaviour
             if (repeatCounter > 1)
             {
                 DrawSquare();
+<<<<<<< Updated upstream
 
                 
+=======
+>>>>>>> Stashed changes
             }
         }
         else
@@ -450,7 +483,16 @@ public class GameManager : MonoBehaviour
         {
             newSquare.GetComponent<SpriteRenderer>().color = player2Color.colorKeys[0].color;
         }
-        
+        if (_gameState == GameState.player1)
+        {
+            _gameState = GameState.player2;
+            Debug.Log(_gameState);
+        }
+        else
+        {
+            _gameState = GameState.player1;
+            Debug.Log(_gameState);
+        }
         newSquare.GetComponent<SpriteRenderer>().sortingOrder = -2;
     }
 }
